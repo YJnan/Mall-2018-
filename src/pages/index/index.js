@@ -30,7 +30,7 @@ let app = new Vue({
             if(this.allLoaded) return
             //数据截留
             this.loading = true
-            axios.post(url.hotLists,{
+            axios.get(url.hotLists,{
                 pageNum:this.pageNum,
                 pageSize:this.pageSize
             }).then(res =>{

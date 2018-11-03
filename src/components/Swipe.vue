@@ -11,20 +11,12 @@
         </div>
 </template>
 
-<style>
-.swiper-slide img {
-  height: 100%;
-  width: 100%;
-}
-</style>
-
-
 <script>
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.css'
 
 export default {
-  name: "swipe",
+  name: 'swipe',
   props: {
     lists: {
       type: Array,
@@ -32,15 +24,22 @@ export default {
     },
     name: {}
   },
-  created() {},
   mounted() {
-    new Swiper(".swiper-container", {
+    new Swiper('.swiper-container', {
       loop: true,
-      pagination: "swiper-pagination"
-    });
+      pagination: {
+        el:'.swiper-pagination'
+        }
+    })
   }
-};
+}
 </script>
 
+<style>
+.swiper-slide img {
+  height: 100%;
+  width: 100%;
+}
+</style>
 
 
