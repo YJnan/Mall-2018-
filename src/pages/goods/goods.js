@@ -4,6 +4,7 @@ import './goods.css'
 import './goods_theme.css'
 import './goods_mars.css'
 import './goods_sku.css'
+import './goods_transition.css'
 
 import Vue from 'vue'
 import url from 'js/api.js'
@@ -19,13 +20,17 @@ let detailTab = ['商品详情','本店成交']
 new Vue({
     el:'#app',
     data:{
+        id,
         details:null,
         detailTab,
         tabIndex:0,
         dealLists:null,
         bannerLists:null,
         skuType:1,
-        showSku:false
+        showSku:false,
+        skuNum:1,
+        isAddCart: false,
+        showAddMessage:false
     },
     created(){
         this.getDetails()
@@ -57,6 +62,26 @@ new Vue({
         chooseSku(type) {
             this.skuType = type
             this.showSku = true
+        },
+        changeSkuNum(num) {
+            if(num<0 && this.skuNum === 1) return
+            this.skuNum += num
+        },
+        addCart(){
+            axios.post(url.addCart, {
+                id,
+                number: this.skuNum
+            }).then(res => {
+                if(res.data.status === 200) {
+                    this.showSku = false
+                    this.isAddCart = true
+                    this.showAddMessage = true
+
+                    setTimeout(() =>{
+                        this.showAddMessage = false
+                    },1000)
+                }
+            })
         }
     },
     components:{
