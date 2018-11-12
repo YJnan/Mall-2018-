@@ -19,7 +19,10 @@ let app = new Vue({
         pageSize:6,
         loading:false,
         allLoaded:false,
-        bannerLists:null
+        bannerLists:null,
+        obj:{
+            age:20
+        }
     },
     created() {
         this.getLists()
