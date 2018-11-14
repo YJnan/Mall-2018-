@@ -68,18 +68,14 @@ new Vue({
             this.skuNum += num
         },
         addCart(){
-            axios.post(url.addCart, {
-                id,
-                number: this.skuNum
-            }).then(res => {
-                if(res.data.status === 200) {
-                    this.showSku = false
-                    this.isAddCart = true
-                    this.showAddMessage = true
-
-                    setTimeout(() =>{
-                        this.showAddMessage = false
-                    },1000)
+            axios.post(url.addCart, {id, number: this.skuNum}).then(res => {
+                if(res.data.status === 200 ){
+                  this.isAddCart = true
+                  this.showSku = false
+                  this.showAddMessage = true
+                  setTimeout(() => {
+                    this.showAddMessage = false
+                  },1000)
                 }
             })
         }
