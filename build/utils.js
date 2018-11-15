@@ -21,11 +21,11 @@ exports.entries = function() {
 
 //多页面输出配置
 exports.htmlPlugin = function() {
-  var entryHtml = glob.sync(PAGE_PATH + '/*/*.html')
-  var arr = []
+  let entryHtml = glob.sync(PAGE_PATH + '/*/*.html')
+  let arr = []
   entryHtml.forEach((filePath) => {
-    var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
-    var conf = {
+    let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
+    let conf = {
       template: filePath,
       filename: filename + '.html',
       chunks: [filename],
@@ -46,6 +46,10 @@ exports.htmlPlugin = function() {
   })
   return arr
 }
+
+
+
+
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
