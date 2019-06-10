@@ -20,7 +20,7 @@ new Vue ({
         editingShopIndex: -1,
         removePopup:false,
         removeData: null,
-        removeMsg:''
+        removeMsg:'',
     },
     computed:{
         allSelected:{
